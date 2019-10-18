@@ -1,13 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="@android:color/holo_red_light"
+        >
+        <!--<com.test.star.quickacessdemo.test2.DragGridView-->
+            <!--android:id="@+id/upGridView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:numColumns="4"-->
+            <!--android:stretchMode="columnWidth"-->
+            <!--&gt;-->
 
-    <com.test.star.quickacessdemo.DragItem
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
+        <!--</com.test.star.quickacessdemo.test2.DragGridView>-->
+        <com.test.star.quickacessdemo.test2.widget.ShowView
+            android:id="@+id/up_drag_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_light"
+            >
 
-</android.support.constraint.ConstraintLayout>
+        </com.test.star.quickacessdemo.test2.widget.ShowView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多控制"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            />
+    </LinearLayout>
+
+
+    <com.test.star.quickacessdemo.test2.DragGridView
+        android:id="@+id/dragGridView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:numColumns="4"
+        android:cacheColorHint="@android:color/transparent"
+        android:verticalSpacing="20dp"
+        android:horizontalSpacing="20dp"
+        android:stretchMode="columnWidth"
+        android:background="@android:color/darker_gray"
+        >
+    </com.test.star.quickacessdemo.test2.DragGridView>
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_gray_style"
+            android:text="取消"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:textSize="@dimen/nomal_text"
+            />
+        <Button
+            android:id="@+id/btn_complete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_bulu_style"
+            android:text="完成"
+            android:textSize="@dimen/nomal_text"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

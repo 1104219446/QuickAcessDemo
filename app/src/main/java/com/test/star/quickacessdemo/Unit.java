@@ -1,11 +1,14 @@
 package com.test.star.quickacessdemo;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +21,7 @@ import java.io.InputStream;
 public class Unit {
 
     private static Matrix mMatrix;
+    private static AnimatorSet mAnimatorSet;
 
     /**
      * 通过BitmapDrawable来获取Bitmap
@@ -84,6 +88,32 @@ public class Unit {
         mMatrix.setScale(scaleX, scaleY);
         return Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight()
                 ,mMatrix,true);
+    }
+
+
+    public static void startTranstation(View view,float x1,float y1,float x2,float y2) {
+
+        ObjectAnimator tansYAnimator=ObjectAnimator.ofFloat(view,"translationX",x1,x2);
+        ObjectAnimator tansXAnimator=ObjectAnimator.ofFloat(view,"translationY",y1,y2);
+        if(mAnimatorSet==null){
+            synchronized (Unit.class){
+                if(mAnimatorSet==null){
+                    mAnimatorSet=new AnimatorSet();
+                }
+            }
+        }
+        mAnimatorSet.play(tansYAnimator).with(tansXAnimator);
+        mAnimatorSet.setDuration(1000);
+        mAnimatorSet.start();
+    }
+
+    public static int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 
 }
